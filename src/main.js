@@ -8,4 +8,12 @@ import 'element-plus/dist/index.css'
 
 import '@/assets/css/global.css'
 
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+// import ElementPlus from 'element-plus'
+// import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
+createApp(App)
+    .use(store)
+    .use(router)
+    .use(ElementPlus)
+    // .use(ElementPlus, {locale: zhCn,})
+    .mount('#app')

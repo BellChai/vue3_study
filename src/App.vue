@@ -1,12 +1,20 @@
 <template>
-  <nav>
-    <Header></Header>
-  </nav>
-  <router-view/>
+  <el-config-provider :locale="locale">
+    <nav>
+      <!-- 头部 -->
+      <Header></Header>
+      <div style="display: flex;">
+        <!-- 侧边栏 -->
+        <Aside></Aside>
+        <!-- 主体 -->
+        <router-view style="flex: 1;" />
+      </div>
+    </nav>
+  </el-config-provider>
+
 </template>
 
 <style>
-
 nav {
   padding: 0px;
 }
@@ -23,11 +31,24 @@ nav a.router-link-exact-active {
 
 <script>
 import Header from "@/components/Header"
+import Aside from "./components/Aside.vue"
+import { defineComponent } from 'vue'
+import { ElConfigProvider } from 'element-plus'
 
-export default{
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+
+
+export default defineComponent({
   name: "Layout",
   components: {
-    Header
+    Header,
+    Aside,
+    ElConfigProvider,
+  },
+  setup() {
+    return {
+      locale: zhCn,
+    }
   }
-}
+})
 </script>
